@@ -9,6 +9,16 @@ body {
 	font-size: $font-size-base;
 	line-height: $line-height-base;
 	color: #000;
+	font-display: swap;
+
+	&.freeze {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		overflow-y: scroll;
+	}
 }
 
 a {
@@ -18,5 +28,6 @@ a {
 	&:hover,
 	&[href^="tel"] {
 		text-decoration: none;
+		cursor: pointer; 
 	}
 }

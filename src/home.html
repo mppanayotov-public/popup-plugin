@@ -1,9 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 	<include src="head.html"></include>
+
+	<include src="popups.html"></include>
 <body>
 	<div class="wrapper">
-		<include src="header.html"></include>
+		<div class="header-container js-header-container">
+			<include src="header.html"></include>
+		</div><!-- /.header-container -->
+
+		<div class="main">
+			<ul class="list-popups">
+				<li>
+					<a href="#popup-1" class="js-popup-trigger" data-target="">
+						Popup trigger: <span><</span>a<span>></span> + href + id
+					</a>
+				</li>
+				
+				<li>
+					<a href="#" class="js-popup-trigger" data-target="#popup-2">
+						Popup trigger: <span><</span>a<span>></span> + data-target + id
+					</a>
+				</li>
+
+				<li>
+					<button class="js-popup-trigger" data-target="#popup-3">
+						Popup trigger: <span><</span>button<span>></span> + data-target + id
+					</button>
+				</li>
+				
+				<li>
+					<button class="js-popup-trigger" data-target=".popup-4">
+						Popup trigger: <span><</span>button<span>></span> + data-target + class
+					</button>
+				</li>
+			</ul><!-- /.list-popups -->
+		</div><!-- /.main -->
 
 		<include src="footer.html"></include>
 	</div><!-- /.wrapper -->
