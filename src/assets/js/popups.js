@@ -53,21 +53,40 @@ export default function initPopups() {
 		body.classList.remove('popup-open');
 	}
 
-	function openPopup(popup) {
+	function openPopup(popup, animation) {
 		if (hasOpenPopup()) {
 			return;
 		}
 
-		popup.classList.add('active');
+		const popupEl = new popupInstance(popup, animation);
+
+		popupEl.element.classList.add('active');
+		popupEl.isActive = true;
+		 if (! animation) {
+			animation = "fade";
+		}
+		popupEl.animation = animation;
+		popupEl.element.classList.add(animation);
+
 		body.classList.add('popup-open');
 		disableBodyScroll();
+
+		console.log('isActive: ', popupEl.isActive);
+		console.log('animation: ', popupEl.animation);
+		console.log(popupEl.element);
+	}
+
+	function popupInstance(popup, animation) {
+		this.element = popup;
+		this.isActive = false;
+		this.animation = "fade";
 	}
 
 	for (let i = 0; i < popupTriggers.length; i++) {
 		const popupTrigger = popupTriggers[i];
 		const target = popupTrigger.getAttribute('data-target');
 		const popup = document.querySelector(target);
-		
+		const animation = popupTrigger.getAttribute('data-animation');
 
 		popupTrigger.addEventListener('click', function() {
 			event.preventDefault();
@@ -78,7 +97,7 @@ export default function initPopups() {
 
 			if (!popup.classList.contains('active')) {
 				closeAllPopups();
-				openPopup(popup);
+				openPopup(popup, animation);
 			}
 		});
 	}
