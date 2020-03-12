@@ -62,10 +62,7 @@ export default function initPopups() {
 
 		popupEl.element.classList.add('active');
 		popupEl.isActive = true;
-		 if (! animation) {
-			animation = "fade";
-		}
-		popupEl.animation = animation;
+		popupEl.animation = animation || "fade";
 		popupEl.element.classList.add(animation);
 
 		body.classList.add('popup-open');
@@ -111,3 +108,5 @@ export default function initPopups() {
 		});
 	}
 }
+
+
